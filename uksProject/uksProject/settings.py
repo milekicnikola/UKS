@@ -15,7 +15,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'axe9!u*nf)yq^8dkphtyd)8rh488yguo@gk7n&sdd4ffk-41xg'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -52,6 +50,11 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'uksProject.urls'
 
+SITE_SUPERUSER_USERNAME = 'admin'
+SITE_SUPERUSER_EMAIL = 'admin@admin.com'
+SITE_SUPERUSER_PASSWORD = 'admin'
+SITE_ID = 1;
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -70,17 +73,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'uksProject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dbUKS',
+        'USER': 'root',
+        'PASSWORD': 'nikola',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'autocommit': True,
+            }        
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -94,7 +102,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
