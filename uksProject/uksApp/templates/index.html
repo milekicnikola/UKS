@@ -1,0 +1,29 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+
+<html>
+<head>
+<title>Welcome</title>
+</head>
+<body>
+{% block content %}
+{% if user.is_authenticated %}
+	<p>Welcome back {{ user }}
+	<br>
+	<a href="{% url 'django.contrib.auth.views.logout' %}?next=/">{% bootstrap_icon "logout" %}
+                    Logout</a>	
+{% else %} 
+	<h1>Welcome to my UKS project</h1>
+	<a class="navbar-brand" href="/">
+                {% bootstrap_icon "star" %}
+            </a>
+	
+	<p>If you don't have an account please <a href="{% url 'registration_register' %}">{% bootstrap_icon "register" %}
+      	      Register</a></p>
+    <p>If you already have an account please
+    <a href="{% url 'django.contrib.auth.views.login' %}">{% bootstrap_icon "login" %} Login</a>
+	
+{% endif %}
+{% endblock %}
+</body>
+</html>
